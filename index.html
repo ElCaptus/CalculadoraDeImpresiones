@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora Casa Estella</title>
+</head>
+<body>
+    <div class='calculadora'>
+        <div>
+            <p>Tamanio de hoja:</p>
+            <select name="tamanioHoja" id='tamanioHoja'>
+                <option value="0" selected>A4</option>
+                <option value="1">A3</option>
+                <option value="2">A3+</option>
+            </select>
+        </div>
+        <div>
+            <p>Tipo de Papel:</p>
+            <select name="tipoPapel" id='tipoPapel' onchange="tipoPapelChange()">
+                <option value="chambril" selected>Chambril</option>
+                <option value="ilustracion">Ilustracion</option>
+                <option value="carton">Carton</option>
+                <option value="autoadhesivo">Autoadhesivo</option>
+            </select>
+        </div>
+        <div>
+            <p>Tipo de Impresion:</p>
+            <select name="tipoImpresion" id='tipoImpresion'>
+                <option value="fullcolor" selected>Full Color</option>
+                <option value="semicolor">Semi Color</option>
+                <option value="textocolor">Texto Color</option>
+            </select>
+        </div>
+        <div>
+            <p>Cantidad de Hojas:</p>
+            <input type="number" value="0" id='cantidadHojas'>
+        </div>
+        <div>
+            <p>Gramaje de Hoja:</p>
+            <select name="gramaje" id='gramaje'>
+                <option value="0" selected>90g o menos</option>
+                <option value="1">115g a 135g</option>
+                <option value="2">140g a 160g</option>
+                <option value="3">180g a 200g</option>
+                <option value="4">210g a 250g</option>
+                <option value="5">Mas de 250g</option>
+            </select>
+        </div>
+        <div id='dobleFazContainer'>
+            <div>
+                <p>Doble Faz:</p>
+                <input type="checkbox" id='dobleFaz' onchange="dobleFazChanged()">
+            </div>
+        </div>
+        <div>
+            <p>Gremio:</p>
+            <input type="checkbox" id='gremio'>
+        </div>
+        <div>
+            <input type="button" value="Calcular" onclick="calcular()">
+        </div>
+        <div>
+            <p>Precio Final: $<span id='result'>0</span></p>
+        </div>
+        <div id='detalle'></div>
+    </div>
+    <script src="./hojas.js"></script>
+    <script src="./calculadora.js"></script>
+</body>
+</html>

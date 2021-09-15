@@ -1,0 +1,10 @@
+precio impresiones -> 
+tamanios = [a3plus,a3,a4,oficio]
+gramaje = [menos de 90g, 115g..175g, 140..160, 180..200, 210..250, mad de 250]
+colores = [texto negro , texto color , semi, pleno]
+descuentos por cantidad por tipo de hoja-> 1..10 (precio base), 10..50, 50..100,100..200,200..300,300..400,400..500,x>500
+
+
+datos que cambian todas las tablas
+    dolar
+    

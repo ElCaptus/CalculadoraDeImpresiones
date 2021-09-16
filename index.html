@@ -66,8 +66,20 @@
             <p>Precio Final: $<span id='result'>0</span></p>
         </div>
         <div id='detalle'></div>
+        <div>
+            <input type="button" value="Save" onclick="saveButton()">
+            <input type="button" value="Clear" onclick="clearButton()">
+        </div>
+    </div>
+    <div id='orders'>
+        <ul id='list'>
+
+        </ul>
+        </hr>
+        <p id='textototal' hidden>Precio total: $<span id='total'>0</span></p>
     </div>
     <script src="./hojas.js"></script>
     <script src="./calculadora.js"></script>
+    <script src="./handlers.js"></script>
 </body>
 </html>

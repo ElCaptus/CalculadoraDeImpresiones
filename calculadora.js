@@ -1,3 +1,10 @@
+
+const arrayOrders = []
+
+const actualOrder = {}
+let totalCost = 0
+
+
 const cantDescuento = [10,50,100,200,300,400,500,1000]
 function calcular() {
     const tamanio = Number(document.getElementById('tamanioHoja').value)
@@ -85,69 +92,33 @@ function calcular() {
             resultado += precioPorImpresionB*cantidad
         }
     }
-    const elems = document.createElement('p').innerHTML = `
+
+
+    const detalle = `
     El precio de cada hoja es: $${precioPorHoja} </br>
     El precio por impresion es: $${precioPorImpresion}</br>
     ${dobleFaz?'El precio por impresion Lado B es: $' + precioPorImpresionB:''}
     `
-    document.getElementById('detalle').innerHTML = elems
-    document.getElementById('result').innerText = Math.round(resultado)
+
+    const elems = document.createElement('p')
+    elems.innerHTML = detalle
+
+    resultado = Math.round(resultado)
+
+    actualOrder.detalleHTML = detalle
+    actualOrder.subtotal = resultado
+    actualOrder.sum = `${cantidad} hojas ${tipoPapel} en ${tipoImpresion}`
+    actualOrder.precioPorHoja = precioPorHoja
+    actualOrder.precioPorImpresion = precioPorImpresion
+    actualOrder.precioPorImpresionB = precioPorImpresionB
+
+    document.getElementById('detalle').innerHTML = elems.innerHTML
+    document.getElementById('result').innerText = resultado
 
 }
 
 
 function valorDescuento(number,percent){
     return ((percent) * (number)) / 100
-}
-
-
-function dobleFazChanged(){
-    const elem = document.getElementById('dobleFazContainer')
-    const checked = document.getElementById('dobleFaz').checked
-    if(checked){
-        elem.innerHTML = `
-        <div>
-            <p>Lado B:</p>
-            <select name="tipoImpresion" id='tipoImpresionB'>
-                <option value="fullcolor" selected>Full Color</option>
-                <option value="semicolor">Semi Color</option>
-                <option value="textocolor">Texto Color</option>
-            </select>
-        </div>
-        <div>
-            <p>Doble Faz:</p>
-            <input type="checkbox" checked id='dobleFaz' onchange="dobleFazChanged()">
-        </div>`
-    }else{
-        elem.innerHTML = `<p>Doble Faz:</p>
-        <input type="checkbox" id='dobleFaz' onchange="dobleFazChanged()">`
-    }
-
-}
-
-function tipoPapelChange(){
-    const elem = document.getElementById('gramaje')
-    const tipoPapel = document.getElementById('tipoPapel').value
-    if(tipoPapel === 'carton'){
-        elem.innerHTML = ` <select name='gramaje' id='gramaje'>
-                <option value='0' selected>TRIPLEX CMPC  255</option>
-                <option value="1">TRIPLEX ZENIT 270</option>
-                <option value="2">DUPLEX REVERSO CAFÉ 255</option>
-            </select>`
-    }else if(tipoPapel === 'autoadhesivo'){
-        elem.innerHTML = `<select name="gramaje" id='gramaje'>
-            <option value="0" selected>160g</option>
-        </select>/`
-    }
-    else{
-        elem.innerHTML = `<select name="gramaje" id='gramaje'>
-            <option value="0" selected>90g o menos</option>
-            <option value="1">115g a 135g</option>
-            <option value="2">140g a 160g</option>
-            <option value="3">180g a 200g</option>
-            <option value="4">210g a 250g</option>
-            <option value="5">Mas de 250g</option>
-        </select>`
-    }
 }
 

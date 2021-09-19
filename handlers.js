@@ -1,3 +1,24 @@
+function calcular(){
+    const tamanio = Number(document.getElementById('tamanioHoja').value)
+    const cantidad = Number(document.getElementById('cantidadHojas').value)
+    const tipoPapel = document.getElementById('tipoPapel').value
+    const gramaje = Number(document.getElementById('gramaje').value)
+    const tipoImpresion = document.getElementById('tipoImpresion').value
+    const gremio = document.getElementById('gremio').checked
+    const dobleFaz = document.getElementById('dobleFaz').checked
+    let tipoImpresionB = document.getElementById('tipoImpresionB')
+    if(tipoImpresionB != null){
+        tipoImpresionB = tipoImpresionB.value
+    }
+    const orden = calcularPedido({tamanio,cantidad,tipoPapel,gramaje,tipoImpresion,gremio,dobleFaz,tipoImpresionB})
+
+    const elems = document.createElement('p')
+    elems.innerHTML = orden.detalleHTML
+
+    document.getElementById('detalle').innerHTML = elems.innerHTML
+    document.getElementById('result').innerText = orden.subtotal
+}
+
 function dobleFazChanged(){
     const elem = document.getElementById('dobleFazContainer')
     const checked = document.getElementById('dobleFaz').checked

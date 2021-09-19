@@ -6,19 +6,12 @@ let totalCost = 0
 
 
 const cantDescuento = [10,50,100,200,300,400,500,1000]
-function calcular() {
-    const tamanio = Number(document.getElementById('tamanioHoja').value)
-    const cantidad = Number(document.getElementById('cantidadHojas').value)
-    const tipoPapel = document.getElementById('tipoPapel').value
-    const gramaje = Number(document.getElementById('gramaje').value)
-    const tipoImpresion = document.getElementById('tipoImpresion').value
-    const gremio = document.getElementById('gremio').checked
-    const dobleFaz = document.getElementById('dobleFaz').checked
+
+function calcularPedido({tamanio,cantidad,tipoPapel,gramaje,tipoImpresion,gremio,dobleFaz,tipoImpresionB}) {
+
     let resultado = 0
     let precioPorHoja = 0
     let precioPorImpresion = 0
-
-
     let posCantidadDescuento = 0
 
 
@@ -81,7 +74,6 @@ function calcular() {
     resultado = precioPorHoja * cantidad + precioPorImpresion * cantidad
     let precioPorImpresionB
     if(dobleFaz){
-        tipoImpresionB = document.getElementById('tipoImpresionB').value
         if (tipoImpresionB === tipoImpresion){
             precioPorImpresionB = precioPorImpresion
             resultado+= precioPorImpresion*cantidad
@@ -91,8 +83,13 @@ function calcular() {
             precioPorImpresionB = precioPorImpresionB - valorDescuento(precioPorImpresionB,porcentajeDescuentoImpresionB)
             resultado += precioPorImpresionB*cantidad
         }
+        precioPorImpresionB = Math.round(precioPorImpresionB)
     }
 
+
+    precioPorHoja = Math.round(precioPorHoja)
+    precioPorImpresion = Math.round(precioPorImpresion)
+    resultado = Math.round(resultado)
 
     const detalle = `
     El precio de cada hoja es: $${precioPorHoja} </br>
@@ -100,10 +97,6 @@ function calcular() {
     ${dobleFaz?'El precio por impresion Lado B es: $' + precioPorImpresionB:''}
     `
 
-    const elems = document.createElement('p')
-    elems.innerHTML = detalle
-
-    resultado = Math.round(resultado)
 
     actualOrder.detalleHTML = detalle
     actualOrder.subtotal = resultado
@@ -112,9 +105,7 @@ function calcular() {
     actualOrder.precioPorImpresion = precioPorImpresion
     actualOrder.precioPorImpresionB = precioPorImpresionB
 
-    document.getElementById('detalle').innerHTML = elems.innerHTML
-    document.getElementById('result').innerText = resultado
-
+    return actualOrder
 }
 
 

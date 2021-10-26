@@ -95,9 +95,9 @@ function calcular() {
 
 
     const detalle = `
-    El precio de cada hoja es: $${precioPorHoja} </br>
-    El precio por impresion es: $${precioPorImpresion}</br>
-    ${dobleFaz?'El precio por impresion Lado B es: $' + precioPorImpresionB:''}
+    El precio de cada hoja es $${precioPorHoja} </br>
+    El precio por impresion es $${precioPorImpresion}</br>
+    ${dobleFaz?'El precio por impresion Lado B es $' + precioPorImpresionB:''}
     `
 
     const elems = document.createElement('p')
@@ -107,7 +107,11 @@ function calcular() {
 
     actualOrder.detalleHTML = detalle
     actualOrder.subtotal = resultado
-    actualOrder.sum = `${cantidad} hojas ${tipoPapel} en ${tipoImpresion}`
+
+  
+
+
+actualOrder.sum = `<p><div class="juntis"><strong style="margin-right: 8px">${cantidad}</strong>  ${tipoPapel} | ${tipoImpresion} <div class="cuadradito"><strong>${actualOrder.subtotal}</strong></div></div></p>`
     actualOrder.precioPorHoja = precioPorHoja
     actualOrder.precioPorImpresion = precioPorImpresion
     actualOrder.precioPorImpresionB = precioPorImpresionB

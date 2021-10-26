@@ -7,41 +7,55 @@
     <link rel="stylesheet" href="style.css">
     <title>Calculadora Casa Estella</title>
 </head>
+
+    
 <body>
-    <div class='calculadora'>
-        <div>
-            <p>Tamanio de hoja:</p>
-            <select name="tamanioHoja" id='tamanioHoja'>
-                <option value="0" selected>A4</option>
+    <p style="font-size: 15px;margin-bottom: 0; text-align: center; margin-right: 170px;color: rgb(196, 77, 34);">última actualización: 14/oct/2021</p>
+     <span><h1 style="margin-top: 0;">Calculadora de impresión</h1></span>
+     
+    <div class="bodys"> 
+    <p>
+        <div class='calculadora'>
+            <div>
+            <p>formato</p>
+            <select name="tamanioHoja" id='tamanioHoja' value="2">
+                <option disabled >tamaño de hoja</option>
+                <option selected value="0">A4</option>
                 <option value="1">A3</option>
                 <option value="2">A3+</option>
             </select>
         </div>
         <div>
-            <p>Tipo de Papel:</p>
+            <p>tipo de papel</p>
             <select name="tipoPapel" id='tipoPapel' onchange="tipoPapelChange()">
-                <option value="chambril" selected>Chambril</option>
+                <option disabled >tipo de Papel</option>
+                <option selected value="chambril">Chambril</option>
                 <option value="ilustracion">Ilustracion</option>
                 <option value="carton">Carton</option>
                 <option value="autoadhesivo">Autoadhesivo</option>
+
             </select>
         </div>
         <div>
-            <p>Tipo de Impresion:</p>
+            <p>tipo de impresión</p>
             <select name="tipoImpresion" id='tipoImpresion'>
+                <option disabled>tipo de impresion</option>
                 <option value="fullcolor" selected>Full Color</option>
                 <option value="semicolor">Semi Color</option>
                 <option value="textocolor">Texto Color</option>
             </select>
         </div>
         <div>
-            <p>Cantidad de Hojas:</p>
-            <input type="number" value="0" id='cantidadHojas'>
+            <p>cantidad</p>
+            <input value="0" class="igualselect" type="number" id='cantidadHojas'>
         </div>
         <div>
-            <p>Gramaje de Hoja:</p>
-            <select name="gramaje" id='gramaje'>
-                <option value="0" selected>90g o menos</option>
+            <p ></p>
+            <p>gramaje</p>
+                <select name="gramaje" id='gramaje'>
+                <option disabled >gramaje de hoja</option>
+                
+                <option selected value="0">90g o menos</option>
                 <option value="1">115g a 135g</option>
                 <option value="2">140g a 160g</option>
                 <option value="3">180g a 200g</option>
@@ -49,37 +63,40 @@
                 <option value="5">Mas de 250g</option>
             </select>
         </div>
-        <div id='dobleFazContainer'>
-            <div>
-                <p>Doble Faz:</p>
-                <input type="checkbox" id='dobleFaz' onchange="dobleFazChanged()">
-            </div>
+        <div class="orden" id='dobleFazContainer'>
+            <div style="width: 100%;">
+                <p class="otro">doble faz</p>
+                <input class = "botoncitos" type="checkbox" id='dobleFaz' onchange="dobleFazChanged()">
+            </div> 
         </div>
         <div>
-            <p>Gremio:</p>
-            <input type="checkbox" id='gremio'>
+            <p class="otro">gremio</p>
+            <input class="boton" type="checkbox" id='gremio'>
+        </div> 
+        <div>
+            <input class="boton1" type="button" value="Calcular" onclick="calcular()">
         </div>
         <div>
-            <input type="button" value="Calcular" onclick="calcular()">
-        </div>
-        <div>
-            <p>Precio Final: $<span id='result'>0</span></p>
+            <p>$<span id='result'>0</span></p>
         </div>
         <div id='detalle'></div>
-        <div>
-            <input type="button" value="Save" onclick="saveButton()">
-            <input type="button" value="Clear" onclick="clearButton()">
+        <div class="juntis">
+            <input class="boton2" type="button" value="Save" onclick="saveButton()">
+            <input class="boton3" type="button" value="Clear" onclick="clearButton()">
         </div>
     </div>
     <div id='orders'>
         <ul id='list'>
 
         </ul>
-        </hr>
-        <p id='textototal' hidden>Precio total: $<span id='total'>0</span></p>
+        <p class="resaltado" id='textototal' hidden><span id='total'>0</span></p>
+
+   
+    </hr>
     </div>
     <script src="./hojas.js"></script>
     <script src="./calculadora.js"></script>
     <script src="./handlers.js"></script>
+</div>
 </body>
 </html>

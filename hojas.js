@@ -1,5 +1,5 @@
 
-const dolar = 103
+const dolar = 104.25
 
 const A4 = {
     fullcolor:0.516,
@@ -20,21 +20,21 @@ const A3plus = {
 }
 
 const A4Gremio = {
-    fullcolor:0.34,
-    semicolor:0.221,
-    textocolor:0.17,
+    fullcolor:0.31,
+    semicolor:0.191,
+    textocolor:0.15,
 }
 
 const A3Gremio = {
-    fullcolor:0.56,
-    semicolor:0.365,
-    textocolor:0.28,
+    fullcolor:0.52,
+    semicolor:0.335,
+    textocolor:0.26,
 }
 
 const A3plusGremio = {
-    fullcolor:0.6708,
-    semicolor:0.43602,
-    textocolor:0.3354
+    fullcolor:0.6308,
+    semicolor:0.39602,
+    textocolor:0.3154
 }
 
 const impresiones = [
@@ -45,19 +45,21 @@ const impresiones = [
     A3Gremio,
     A3plusGremio
 ]
-
+ //Precios A3 hojas. 
 const precioHojaA3 = {
-    chambril:[0,10,15,20,20,30],
-    ilustracion:[15,20,20,30,35,50],
-    carton:[26.13, 27.13, 26.13],
-    autoadhesivo:[53]
+    chambril:[0,10,15,28,32,40],
+    ilustracion:[12,17,19,26,32,40],
+    carton:[30, 35, 30],
+    autoadhesivo:[45 , 45]
+    
 }
-
+ //Precios A3 plus hojas. 
 const precioHojaA3plus = {
     chambril:[0,10,15,20,20,30],
-    ilustracion:[15,20,20,30,35,50],
-    carton:[26.13, 27.13, 26.13],
-    autoadhesivo:[53]
+    ilustracion:[30,30,30,40,40,50],
+    carton:[30, 35, 30], //tiene un aumento del 15% por el grosor
+    autoadhesivo:[42 , 60],
+
 }
 
 //decuentos.cantidadImpresion[0,1] -> 0 = 1 a 10 cantidad       1 = 90g gramaje
@@ -75,13 +77,13 @@ const descuentos = {
     ],
     cantidadHojas:[
         [0,0,0,0,0,0],
-        [0,10,10,10,10,10],
-        [0,20,20,20,12,12],
-        [0,25,25,25,16,16],
-        [0,26,26,26,18,18],
-        [0,28,28,28,20,20],
-        [0,29,29,29,24,24],
-        [0,30,30,30,26,26],
-        [0,35,35,35,30,28]
+        [10,10,10,10,10,10],
+        [20,20,20,20,12,12],
+        [25,25,25,25,16,16],
+        [26,26,26,26,18,18],
+        [28,28,28,28,20,20],
+        [29,29,29,29,24,24],
+        [32,32,32,32,26,26],
+        [35,35,35,35,30,28]
     ],
 }

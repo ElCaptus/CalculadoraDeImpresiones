@@ -7,6 +7,8 @@ let totalCost = 0
 
 const cantDescuento = [10,50,100,200,300,400,500,1000]
 
+const descuentoAgregadoGremio = [0,0,0,0,0,0,0,0]
+
 function calcularPedido({tamanio,cantidad,tipoPapel,gramaje,tipoImpresion,gremio,dobleFaz,tipoImpresionB}) {
 
     let resultado = 0
@@ -14,6 +16,14 @@ function calcularPedido({tamanio,cantidad,tipoPapel,gramaje,tipoImpresion,gremio
     let precioPorImpresion = 0
     let posCantidadDescuento = 0
 
+    let agregarDescuentoGremio = 0
+    cantDescuento.forEach((cantCopias,index)=>{
+        if(cantidad >= cantCopias){
+            let pos = index > descuentoAgregadoGremio.length-1 ? descuentoAgregadoGremio.length-1 : index
+            agregarDescuentoGremio = descuentoAgregadoGremio[pos]
+        }
+    })
+    console.log(`Descuento por gremio agregado: ${agregarDescuentoGremio}`)
 
     cantDescuento.forEach((cantCopias,index) => {
         if(cantidad >= cantCopias){
@@ -66,7 +76,7 @@ function calcularPedido({tamanio,cantidad,tipoPapel,gramaje,tipoImpresion,gremio
     
     precioPorImpresion = impresiones[tamanioReal][tipoImpresion] * dolar
     
-    const porcentajeDescuentoHojas = descuentos.cantidadHojas[posCantidadDescuento][gramaje]
+    const porcentajeDescuentoHojas = descuentos.cantidadHojas[posCantidadDescuento][gramaje] + agregarDescuentoGremio
     const porcentajeDescuentoImpresion = descuentos.cantidadImpresion[posCantidadDescuento][gramaje]
     precioPorHoja = precioPorHoja - valorDescuento(precioPorHoja,porcentajeDescuentoHojas)
     precioPorImpresion = precioPorImpresion - valorDescuento(precioPorImpresion,porcentajeDescuentoImpresion)
